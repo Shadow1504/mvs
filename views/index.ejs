@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>pages</h1>
+    <h2>file2</h2>
+    <a href="/new">new</a>
+    <h2><%= users.name %> </h2>
+    <!-- <input type="text" class="textgeting">
+    <button class="btn">search</button> -->
+    <%users.map(result => {%>
+     
+        <table border="1">
+           <tr>
+      <td>  <%= result.name %></td>
+      
+
+    
+    
+    </td>
+    <td>
+        <a href="/update?id=<%= result._id%>" class="btn border-shadow update">
+   edit
+        </a>
+      
+        <a class="del" data-id=<%= result._id%> >
+            delete
+        </a>
+    </td>
+       </tr>
+    
+       </table> 
+    
+    <%})%>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <!-- <script src="/js/index.js"></script> -->
+    <script>
+// $(".del").click(function(){
+//     let id=$(this).attr("data-id")
+//     $.ajax({
+//         "url":`http://localhost:3002/api/users/${id}`,
+//         "method":"DELETE"
+//     }).done(function(response){
+//         location.reload();
+//     })
+// })
+// let btutn = document.querySelector(".btn");
+// let name = document.querySelector(".textgeting");
+// btutn.addEventListener("click",function(){
+//     axios.get(`http://localhost:3002/api/users${name}`)
+    
+//     .then(function(response){
+//         console.log("dddddd",response);
+//         res.render('index', { users : response.data });
+//     })
+//     .catch(err =>{
+//         res.send(err);
+//     })
+// })
+ $del = $("a.del");
+    $del.click(function(){
+       var id = $(this).attr("data-id")
+         $.ajax({
+            "url" : `http://localhost:10000/api/users/${id}`,
+            "method" : "DELETE"
+        }).done(function(response){
+                location.reload();
+            }) 
+        })
+ 
+        
+    </script>
+    </body>
+    </html>
+</html>
